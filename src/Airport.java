@@ -52,7 +52,14 @@ public class Airport
         for (int i = allFlights.size() - 1; i >= 0; i--)
         {
             Flight temp = allFlights.get(i);
-
+            minimum = (int) (temp.getCapacity() * .2);
+            passengers = temp.getNumPassengers();
+            if (passengers < minimum)
+            {
+                flightSize += passengers;
+                allFlights.remove(i);
+            }
         }
+        return flightSize;
     }
 }
